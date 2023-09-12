@@ -1,4 +1,4 @@
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { Simulate } from "react-dom/test-utils";
 import waiting = Simulate.waiting;
 import { root } from "postcss";
@@ -99,11 +99,6 @@ export const LoginCheck = () => {
       password: password,
     };
 
-    function refreshPage() {
-      // @ts-ignore
-      window.location.reload(0);
-    }
-
     fetch("http://localhost:3003/auth/login", {
       method: "PUT",
       headers: {
@@ -115,8 +110,9 @@ export const LoginCheck = () => {
       .then((response) => response.json())
       .then((response) => {
         localStorage.setItem("JWT", response.token);
-      })
-      .then(refreshPage);
+        localStorage.setItem("id", response.userId);
+        window.location.replace("/");
+      });
   };
 
   return (
