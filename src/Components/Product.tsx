@@ -17,8 +17,8 @@ type Props = {
 export const calculatePrice = (product: Product) => {
   return (
     Math.round(
-      (((product.l100 / 100) * product.distance * product.essencePrice) / (product.place + 1)) *
-        100,
+      (((product.l100 / 100) * product.distance * 2) / (product.place + 1)) *
+        100
     ) / 100
   );
 };

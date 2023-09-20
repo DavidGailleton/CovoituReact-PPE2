@@ -84,7 +84,6 @@ export const SignUpCheck = () => {
 };
 
 export const LoginCheck = () => {
-  const navigate = useNavigate();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event);
@@ -111,6 +110,7 @@ export const LoginCheck = () => {
       .then((response) => {
         localStorage.setItem("JWT", response.token);
         localStorage.setItem("id", response.userId);
+        localStorage.setItem("name", response.name);
         window.location.replace("/");
       });
   };
