@@ -94,7 +94,7 @@ export const LoginCheck = () => {
     const password: string = passwordInput.value;
 
     const formResult = {
-      email: email,
+      email: email.toLowerCase(),
       password: password,
     };
 

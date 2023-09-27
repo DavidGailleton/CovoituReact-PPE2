@@ -9,6 +9,7 @@ import Post from "./routes/post.tsx";
 import Error from "./Components/Error.tsx";
 import Default from "./routes/default.tsx";
 import Signup from "./routes/signup.tsx";
+import MyProduct from "./routes/myProduct.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,18 +29,21 @@ const router = createBrowserRouter([
         path: "post",
         element: <Post />,
       },
+      {
+        path: "myProduct",
+        element: <MyProduct />,
+      },
     ],
   },
   {
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
-    children: [
-      {
-        path: "signup",
-        element: <Signup />,
-      },
-    ],
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    errorElement: <Error />,
   },
 ]);
 
