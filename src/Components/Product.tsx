@@ -1,5 +1,11 @@
+type Props = {
+  product: Product;
+};
+
+// Définition du type Product
 export type Product = {
   name: string;
+  mail: string;
   destination: string;
   depart: string;
   car: string;
@@ -11,38 +17,35 @@ export type Product = {
   place: number;
 };
 
-type Props = {
-  product: Product;
-};
+// Fonction pour calculer le prix du trajet en fonction des données du produit
 export const calculatePrice = (product: Product) => {
   return (
+    // Calcul du prix du trajet
     Math.round(
-      (((product.l100 / 100) * product.distance * 2) / (product.place + 1)) *
+      (((product.l100 / 100000) * product.distance * 2) / (product.place + 1)) *
         100
     ) / 100
   );
 };
 
+// Composant ProductCard qui affiche les détails d'un produit
 export const ProductCard = (props: Props) => {
   return (
-    <>
-      <div className="col-start-1 row-start-1">
-        <p>
-          {props.product.heure} : {props.product.minute} h
-        </p>
-        <p>
-          {props.product.depart} &rarr; {props.product.destination}
-        </p>
+    <div className="bg-white rounded-lg shadow-lg p-4">
+      <div className="flex justify-between">
+        <div className="flex flex-col">
+          <p className="text-lg font-semibold">{props.product.heure}</p>
+          <p className="text-gray-600">
+            {props.product.depart} &rarr; {props.product.destination}
+          </p>
+          <p className="text-gray-600">Place : {props.product.place}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-lg font-semibold">
+            {calculatePrice(props.product)} € / trajet
+          </p>
+        </div>
       </div>
-      <div className="col-start-2 row-start-1 text-end">
-        <p>{calculatePrice(props.product)} €</p>
-      </div>
-      <div className="col-start-1 row-start-2">
-        <h3 className="text-start">{props.product.name}</h3>
-      </div>
-      <div className="col-start-2 row-start-2 text-end">
-        <p>Place : {props.product.place}</p>
-      </div>
-    </>
+    </div>
   );
 };

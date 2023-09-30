@@ -7,9 +7,7 @@ CovoituReact est une App web permettant de mettre en relation plusieurs personne
 
 Ce projet utilise une structure dite MERN Stack, c'est a dire qu'il utilise MongoDB, Express.js, React.js et Node.js pour réaliser une application Full-Stack.
 Ces différentes solutions vont se structurer de cette manière :
-
-![MERN-stack-schema](img%2FMERN-stack.webp)
-
+![[MERN-stack.webp]]
 ## Outils utilisés
 
 ### Front-end
@@ -24,15 +22,17 @@ La partie back-end vas utiliser 2 frameworks :
   - Écrire des fonctions de traitement pour différentes requêtes HTTP répondant à différentes URI
   - Intégrer avec les moteurs de rendu de « vues » dans le but de générer des réponses en insérant des données dans des templates
   - Ajouter des requêtes de traitement « middleware » où vous le voulez dans le tunnel gestionnaire de la requête
-- Mongoose : Mongoose est un mappeur de document objet (Object-Relational Mapping). 
+- Mongoose : Mongoose est un mappeur de document objet (Object-Relational Mapping).
 
-(((((((utiliser [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)))))))
+utiliser [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 
 ## Visuel du site
 
+Le site web utilisera un visuel sobre et simple.
+
 ## Fonctionnement
 
-
+### 
 
 ## Sources
 https://www.freecodecamp.org/news/how-to-build-a-fullstack-authentication-system-with-react-express-mongodb-heroku-and-netlify/

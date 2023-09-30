@@ -1,3 +1,4 @@
+/* import de tailwind en tant que framework CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

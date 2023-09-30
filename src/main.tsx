@@ -10,7 +10,9 @@ import Error from "./Components/Error.tsx";
 import Default from "./routes/default.tsx";
 import Signup from "./routes/signup.tsx";
 import MyProduct from "./routes/myProduct.tsx";
+import UserInfo from "./routes/userInformation.tsx";
 
+// Crée une instance de BrowserRouter avec la structure des routes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
         path: "myProduct",
         element: <MyProduct />,
       },
+      {
+        path: "userInformation",
+        element: <UserInfo />,
+      },
     ],
   },
   {
@@ -47,8 +53,9 @@ const router = createBrowserRouter([
   },
 ]);
 
+// Rend l'application React dans l'élément avec l'ID "root"
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} /> {/* Fournit le router à l'application */}
   </React.StrictMode>
 );

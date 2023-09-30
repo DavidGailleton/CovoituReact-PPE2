@@ -1,28 +1,26 @@
 import { PostProduct } from "../Components/ProdutcsFunction.tsx";
-import { useState } from "react";
-import { Product } from "../Components/Product.tsx";
-import { redirect } from "react-router-dom";
 
 export default function Post() {
+  // Fonction pour vérifier si un utilisateur a déjà créé une annonce avec son nom
   const checkIfPostExistWithName = async () => {
-    const UserName = localStorage.getItem("name");
+    const UserName = localStorage.getItem("name"); // Récupère le nom de l'utilisateur depuis le stockage local
     console.log(UserName);
     const response = await fetch(
-      `http://localhost:3003/products/getproducts/name/:${UserName}`
+      `http://localhost:3003/products/getproducts/name/${UserName}`
     ).then((response) => response.json());
     // Si la réponse contient `message: "Product found"`, alors on redirige vers la page d'accueil
     if (response.message === "Product found") {
-      window.location.href = "/"; // Redirection vers la page d'accueil
+      window.location.href = "/myproduct"; // Redirection vers la page "myproduct"
     }
     console.log(response);
   };
 
-  checkIfPostExistWithName();
+  checkIfPostExistWithName(); // Appelle la fonction de vérification lors du chargement de la page
 
   return (
     <>
-      <main className="p-64">
-        <PostProduct />
+      <main className="px-64">
+        <PostProduct /> {/* Affiche le composant PostProduct */}
       </main>
     </>
   );

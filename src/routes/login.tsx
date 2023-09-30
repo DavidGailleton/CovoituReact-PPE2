@@ -13,7 +13,8 @@ export default function Login() {
               </h1>
               <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer"></p>
             </div>
-            <LoginCheck></LoginCheck>
+            <LoginCheck></LoginCheck>{" "}
+            {/* Composant de vérification de la connexion */}
           </div>
         </div>
       </main>

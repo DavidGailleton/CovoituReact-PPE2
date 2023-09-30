@@ -1,31 +1,28 @@
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
-import { Simulate } from "react-dom/test-utils";
-import waiting = Simulate.waiting;
-import { root } from "postcss";
-import { render } from "react-dom";
-import App from "../routes/post.tsx";
+import { Link } from "react-router-dom";
+
+// Composant pour l'inscription
 export const SignUpCheck = () => {
   const postUser = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(event);
+    event.preventDefault(); // Empêche la soumission du formulaire par défaut
+
+    // Récupération des éléments du formulaire
     const usernameInput = event.target.username;
     const emailInput = event.target.email;
     const passwordInput = event.target.password;
 
-    console.log(usernameInput);
-
+    // Récupération des valeurs saisies par l'utilisateur
     const username: string = usernameInput.value;
     const email: string = emailInput.value;
     const password: string = passwordInput.value;
 
-    console.log(username);
-
+    // Création d'un objet avec les données du formulaire
     const formResult = {
       name: username,
       email: email,
       password: password,
     };
 
+    // Envoi des données au serveur via une requête fetch
     fetch("http://localhost:3003/auth/signup", {
       method: "PUT",
       headers: {
@@ -39,8 +36,7 @@ export const SignUpCheck = () => {
 
   return (
     <>
-      {/*{UserContext && <div>Your are already logged</div>}*/}
-      {/*{isLogged === false && (*/}
+      {/* Commentaires supprimés pour désactiver une partie du formulaire */}
       <form
         onSubmit={(e) => {
           postUser(e);
@@ -78,26 +74,30 @@ export const SignUpCheck = () => {
           <Link to={"../login"}> LogIn</Link>
         </div>
       </form>
-      {/*)}*/}
     </>
   );
 };
 
+// Composant pour la connexion
 export const LoginCheck = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(event);
+    event.preventDefault(); // Empêche la soumission du formulaire par défaut
+
+    // Récupération des éléments du formulaire
     const emailInput = event.target.email;
     const passwordInput = event.target.password;
 
+    // Récupération des valeurs saisies par l'utilisateur
     const email: string = emailInput.value;
     const password: string = passwordInput.value;
 
+    // Création d'un objet avec les données du formulaire
     const formResult = {
       email: email.toLowerCase(),
       password: password,
     };
 
+    // Envoi des données au serveur via une requête fetch
     fetch("http://localhost:3003/auth/login", {
       method: "PUT",
       headers: {
@@ -109,8 +109,8 @@ export const LoginCheck = () => {
       .then((response) => response.json())
       .then((response) => {
         localStorage.setItem("JWT", response.token);
-        localStorage.setItem("id", response.userId);
         localStorage.setItem("name", response.name);
+        localStorage.setItem("email", response.email);
         window.location.replace("/");
       });
   };
@@ -144,7 +144,6 @@ export const LoginCheck = () => {
             Log In
           </button>
         </div>
-
         <div className="text-end mt-6 flex flex-row justify-center">
           <p>Toujours pas de compte ? : </p>
           <Link to={"../signup"} className="text-blue-600 hover:text-blue-700">
